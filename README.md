@@ -12,6 +12,8 @@
 + [客户服务器模式](https://github.com/a1029563229/Computer-Networking/tree/master/2/2.2)
 + [标准客户-服务器应用](https://github.com/a1029563229/Computer-Networking/tree/master/2/2.3)
 + [对等模式](https://github.com/a1029563229/Computer-Networking/tree/master/2/2.4)
++ [练习题](https://github.com/a1029563229/Computer-Networking/tree/master/2/practice)
++ [练习题（附参考答案）](https://github.com/a1029563229/Computer-Networking/tree/master/2/answer)
 
 ## 传输层
 + [介绍](https://github.com/a1029563229/Computer-Networking/tree/master/3/3.1)
