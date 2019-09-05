@@ -34,3 +34,40 @@
   - 对于某些需要特殊权限才能访问的资源需要客户端在请求里提供用户名密码的认证信息。它是对 WWW-Authenticate 的应答。
 - Upgrade-Insecure-Requests：1
   - Upgrade-Insecure-Requests 是一个请求首部，用来向服务器端发送信号，表示客户端优先选择加密及带有身份验证的响应，并且它可以成功处理 upgrade-insecure-requests CSP 指令。
+- User-Agent	Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36
+  - 携带当前的用户代理信息，一般包括浏览器、浏览器内核和操作系统的版本型号信息。它是 Server 头是对应的，一个是表达服务器信息，一个是表达客户端信息。服务器可以根据用户代理信息统计出网页服务的浏览器、操作系统的使用占比情况，服务器也可以根据 UA 的信息来定制不一样的内容。
+- Accept	text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+  - 表示客户端期望服务器返回的媒体格式，客户端期望的资源类型服务器可能没有，所以客户端会期望多种类型，并且设置优先级，服务器根据优先级寻找响应的资源返回给客户端。
+- Accept-Encoding	gzip, deflate
+  - HTTP 请求头 Accept-Encoding 会将客户端能够理解的内容编码方式——通常是某种压缩算法——进行通知。通过内容协商的方式，服务端会选择一个客户端提议的方式，使用并在响应报文首部 Content-Encoding 中通知客户端该选择。
+- Accept-Language	zh-CN,zh;q=0.9,en;q=0.8
+  - Accept-Language 请求头允许客户端声明它可以理解的自然语言，以及优先选择的区域方言。借助内容协商机制，服务器可以从诸多备选项中选择一项进行应用，并使用 Content-Language 应答头通知客户端它的选择。浏览器会基于其用户界面语言来为这个请求头设置合适的值，即便是用户可以进行修改，但是这种情况极少发生。
+- Cookie
+  - Cookie 是一个请求首部，其中含有先前服务器通过 Set-Cookie 首部投放并存储到客户端的 HTTP cookies；
+- Connection	keep-alive
+  - Connection 头决定当前的事务完成后，是否会关闭网络连接。如果该值是 “keep-alive”，网络连接就是持久的，不会关闭，使得对同一个服务器的请求可以继续在该连接上完成。
+  - close：表明客户端或服务器想要关闭该网络连接，这是 HTTP/1.0 请求的默认值。
+
+### Response Headers
+- HTTP/1.1 200 OK
+  - HTTP 协议版本 1.1，状态码为 200，信息为 OK
+- Date	Wed, 04 Sep 2019 23:00:19 GMT
+  - Date 是一个通用首部，其中包含了报文创建的日期和时间。
+- Content-Type	text/html; charset=utf-8
+  - Content-Type 实体头部用于指示资源的 MIME 类型 media type；
+  - 在响应中，Content-Type 标头告诉客户端实际返回的内容的内容类型，浏览器会在某些情况下进行 MIME 查询，并不一定遵循此标题的值；为了防止这种行为，可以将标题 X-Content-Type 设置为 nosniff；
+  - 在请求中（如 POST 或 PUT），客户端告诉服务器实际发送的数据类型。
+- Transfer-Encoding	chunked
+  - Transfer-Encoding 消息首部指明了将 entity 安全传递给用户所采用的编码形式；
+  - Transfer-Encoding 是一个逐跳传输消息首部，即仅用于两个节点之间的消息传递，而不是所请求的资源本身。一个多节点连接中的每一段都可以应用不同的 Transfer-Encoding 值。如果你想要把压缩后的数据应用于整个连接，那么奇怪使用端到端传输消息首部 Content-Encoding
+  - chunked：数据以一系列分块的形式发送。Content-Length 在这种情况下不被发送。在每一个分块的开头需要添加当前分块的长度，以十六进制的形式表示，后面紧跟着'\r\n'，之后是分块本身，后面也是'\r\n'。终止块是一个常规的分块，不同之处在于其长度为 0.终止块后面是一个挂载，由一系列（或者为空）的实体消息首部构成。
+  - compress：压缩算法，因为专利问题已被弃用；
+  - deflate：采用 zlib 结构，和 deflate 压缩算法。
+  - gzip：表示采用 Lempel-Ziv coding（LZ77）压缩算法，以及 32 位 CRC 校验的编码方式。这个编码最初由 UNIX 平台式的 gzip 程序采用。
+  - identity：用于指代自身（例如：未经过压缩和修改）。
+- Vary	Accept-Encoding
+  - Vary 是一个 HTTP 响应头信息，它决定了对于未来的一个请求头，应该用一个缓存的回复还是向源服务器请求一个新的回复。它被服务器用来表面在内容协商算法中选择一个资源代表的时候应该使用哪些头部信息。
+- ETag	W/"141fb-8bBJz9vV9Eti0oCDTknCy6CH8/Y"
+  - ETag HTTP 响应头是资源的特定版本的标识符。这可以让缓存更高效，并节省贷款，因为如果内容没有改变，Web 服务器不需要发送完整的响应。而如果内容发送了改变，使用 ETag 有助于防止资源的同时更新相互覆盖。
+  - 如果给定 URL 中的资源更改，则一定要生成新的 ETag 值。因此 Etags 类似于指纹，也可能被某些服务器用于跟踪。比较 etags 能快速确定此资源是否变化，但也可能被跟踪服务器永久存留。
+  - 客户端发送 If-None-Match 字段，值为服务器返回的 E-Tag，然后服务器将客户端的 Etag 与其当前版本的资源的 ETag 进行比较，如果两个值匹配（即资源未更改），服务器将返回不带任何内容的 304 修改状态，告诉客户端缓存版本可用。
