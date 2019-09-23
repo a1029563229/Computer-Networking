@@ -36,3 +36,6 @@
 
 ## 物理层与传输介质
 + [介绍](https://github.com/a1029563229/Computer-Networking/tree/master/7/7.1)
+
+## 多媒体与服务质量
++ [压缩](https://github.com/a1029563229/Computer-Networking/tree/master/8/8.1)
