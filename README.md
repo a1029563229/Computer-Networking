@@ -39,3 +39,5 @@
 
 ## 多媒体与服务质量
 + [压缩](https://github.com/a1029563229/Computer-Networking/tree/master/8/8.1)
++ [因特网中的多媒体](https://github.com/a1029563229/Computer-Networking/tree/master/8/8.3)
++ [小结](https://github.com/a1029563229/Computer-Networking/tree/master/8/8.x)
