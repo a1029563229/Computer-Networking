@@ -41,3 +41,10 @@
 + [压缩](https://github.com/a1029563229/Computer-Networking/tree/master/8/8.1)
 + [因特网中的多媒体](https://github.com/a1029563229/Computer-Networking/tree/master/8/8.3)
 + [小结](https://github.com/a1029563229/Computer-Networking/tree/master/8/8.x)
+
+## 网络管理
++ [小结](https://github.com/a1029563229/Computer-Networking/tree/master/9/9.x)
+
+## 网络安全
++ [介绍](https://github.com/a1029563229/Computer-Networking/tree/master/10/10.1)
++ [机密性](https://github.com/a1029563229/Computer-Networking/tree/master/10/10.2)
