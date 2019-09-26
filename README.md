@@ -15,6 +15,7 @@
 + [练习题](https://github.com/a1029563229/Computer-Networking/tree/master/2/practice)
 + [练习题（附参考答案）](https://github.com/a1029563229/Computer-Networking/tree/master/2/answer)
 + [HTTP 协议抓包](https://github.com/a1029563229/Computer-Networking/tree/master/2/experiment)
++ [打开浏览器](https://github.com/a1029563229/Computer-Networking/tree/master/2/browser)
 
 ## 传输层
 + [介绍](https://github.com/a1029563229/Computer-Networking/tree/master/3/3.1)
